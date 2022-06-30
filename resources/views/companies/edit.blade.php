@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <th>プレフィックス</th>
-            <td><input type="text" name="prefix" value="{{ $company->prefix }}"></td>
+            <td>{{ $company->prefix }}</td>
         </tr>
     </table>
     <input type="submit" value="更新">

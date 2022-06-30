@@ -11,7 +11,6 @@ class Company extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'name','manager_name','phone_number','postal_code','address','mail_address'
+        'name','manager_name','phone_number','postal_code','prefecture_code','address','mail_address','prefix'
     ];
-    protected $dates = ['deleted_at'];
 }
