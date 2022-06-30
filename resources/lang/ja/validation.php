@@ -159,14 +159,7 @@ return [
     */
 
     'attributes' => [
-        'name' => '会社名',
-        'manager_name' => '担当者名',
-        'phone_number' => '電話番号',
-        'postal_code' => '郵便番号',
-        'prefecture_code' => '都道府県',
-        'address' => '住所',
-        'mail_address' => 'メールアドレス',
-        'prefix' => 'プレフィックス',
+
     ],
 
 ];
