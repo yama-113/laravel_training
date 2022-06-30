@@ -17,15 +17,7 @@ class CompaniesController extends Controller
     }
     public function store(Request $request){
         $company = new Company;
-        $company->name=$request->input('name');
-        $company->manager_name=$request->input('manager_name');
-        $company->phone_number=$request->input('phone_number');
-        $company->postal_code=$request->input('postal_code');
-        $company->prefecture_code=$request->input('prefecture_code');
-        $company->address=$request->input('address');
-        $company->mail_address=$request->input('mail_address');
-        $company->prefix=$request->input('prefix');
-        $company->save();
+        $company->fill($request->all())->save();
         return redirect('companies');
     }
     // 会社情報更新
