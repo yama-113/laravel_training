@@ -16,7 +16,8 @@ class CompaniesController extends Controller
     public function create(){
         return view('companies.create');
     }
-    public function store(Request $request){
+    public function store(StoreCompanyRequest $request){
+        $validated = $request->validated();
         $company = new Company;
         $company->fill($request->all())->save();
         return redirect('companies');
