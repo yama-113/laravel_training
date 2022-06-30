@@ -1,18 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Company;
 
 class CompaniesController extends Controller
 {
-    // 一覧表示
+    // 会社情報一覧表示
     public function index(){
         $companies = Company::all();
         return view('companies.index', compact('companies'));
     }
-    // 新規作成
+    // 会社情報新規作成
     public function create(){
         return view('companies.create');
     }
@@ -47,9 +46,10 @@ class CompaniesController extends Controller
         $company->save();
         return redirect('companies');
     }
-    // public function delete(int $id){
-    //     $company = Company::find($id);
-    //     $company->delete();
-    //     return view('companies.index', compact('company'));
-    // }
+    // 会社情報論理削除
+    public function destory($id){
+        Company::where('id', $id)->delete();
+        return redirect('companies');
+    }
 }
+

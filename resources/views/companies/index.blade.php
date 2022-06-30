@@ -30,13 +30,14 @@
                 <td>{{$company->phone_number}}</td>
                 <td>
                     {{$company->postal_code}}<br>
+                    {{$company->prefecture_code}}
                     {{$company->address}}
                 </td>
                 <td>{{$company->mail_address}}</td>
                 <td><a href="">見積一覧</a></td>
                 <td><a href="">請求一覧</a></td>
                 <td><a href="{{ route('companies.edit',$company->id) }}">編集</a></td>
-                <td><a href="">削除</a></td>
+                <td><a href="{{ route('companies.destory',$company->id) }}">削除</a></td>
             </tr>
         @endforeach
     </table>

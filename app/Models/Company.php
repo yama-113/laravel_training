@@ -13,5 +13,5 @@ class Company extends Model
     protected $fillable = [
         'name','manager_name','phone_number','postal_code','address','mail_address'
     ];
-    // protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];
 }

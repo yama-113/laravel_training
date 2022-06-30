@@ -18,16 +18,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// 一覧表示
+// 会社情報一覧表示
 Route::get('companies',[CompaniesController::class, 'index'])->name('companies');
 
-// 新規作成
+// 会社情報新規作成
 Route::get('companies/create',[CompaniesController::class, 'create'])->name('companies.create');
 Route::post('companies/store',[CompaniesController::class, 'store'])->name('companies.store');
 
-// 編集
+// 会社情報編集
 Route::get('companies/edit/{id}', [CompaniesController::class, 'edit'])->name('companies.edit');
-Route::post('companies/update/{id}', [CompaniesController::class, 'update'])->name('companies.update');
+Route::put('companies/update/{id}', [CompaniesController::class, 'update'])->name('companies.update');
 
-// 削除
-// Route::get('companies',[CompaniesController::class, 'delete'])->name('companies');
+// 会社情報削除
+Route::get('companies/destory/{id}', [CompaniesController::class,'destory'])->name('companies.destory');
