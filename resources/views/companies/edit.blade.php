@@ -2,7 +2,6 @@
 <a href="{{ route('companies') }}">{{ __('戻る') }}</a>
 <form action="{{ route('companies.update',['id' => $company->id]) }}" method="post">
     @csrf
-    @method("PUT")
     <table border="1">
         <tr>
             <th>会社名</th>

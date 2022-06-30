@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\QuotationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,10 @@ Route::post('companies/store',[CompaniesController::class, 'store'])->name('comp
 
 // 会社情報編集
 Route::get('companies/edit/{id}', [CompaniesController::class, 'edit'])->name('companies.edit');
-Route::put('companies/update/{id}', [CompaniesController::class, 'update'])->name('companies.update');
+Route::post('companies/update', [CompaniesController::class, 'update'])->name('companies.update');
 
 // 会社情報削除
 Route::get('companies/destory/{id}', [CompaniesController::class,'destory'])->name('companies.destory');
+
+// 見積情報一覧
+Route::get('quotations/{id}',[QuotationsController::class,'index'])->name('quotations');
