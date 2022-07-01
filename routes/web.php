@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\QuotationsController;
+use App\Http\Controllers\InvoicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
