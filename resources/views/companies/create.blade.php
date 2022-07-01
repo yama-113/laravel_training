@@ -10,7 +10,7 @@
                     @error('name')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="{{ old('name') }}">
                 </td>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
                     @error('manager_name')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="manager_name">
+                    <input type="text" name="manager_name" value="{{ old('message') }}">
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                     @error('phone_number')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="phone_number">
+                    <input type="text" name="phone_number" value="{{ old('phone_number') }}">
                 </td>
             </tr>
             <tr>
@@ -38,7 +38,7 @@
                     @error('postal_code')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="postal_code"><br>
+                    <input type="text" name="postal_code" value="{{ old('postal_code') }}"><br>
                     都道府県<br>
                     @error('prefecture_code')
                         <div class="errors">{{ $message }}</div>
@@ -46,14 +46,16 @@
                     <select name="prefecture_code">
                         <option value="">選択</option>
                         @foreach(config('prefectures') as $key => $value)
-                            <option value="{{ $key }}">{{ $value }}</option>
+                            <option value="{{ $key }}"
+                            {{-- @if($key === (int){{ old('prefecture_code') }}) selected @endif --}}
+                            >{{ $value }}</option>
                         @endforeach
                     </select><br>
                     市区町村<br>
                     @error('address')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="address"><br>
+                    <input type="text" name="address" value="{{ old('address') }}"><br>
                 </td>
             </tr>
             <tr>
@@ -62,7 +64,7 @@
                     @error('mail_address')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="mail_address">
+                    <input type="text" name="mail_address" value="{{ old('mail_address') }}">
                 </td>
             </tr>
             <tr>
@@ -71,7 +73,7 @@
                     @error('prefix')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="prefix">
+                    <input type="text" name="prefix" value="{{ old('prefix') }}">
                 </td>
             </tr>
         </table>
