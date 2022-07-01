@@ -7,7 +7,7 @@
             <tr>
                 <th>見積名</th>
                 <td>
-                    <input type="text" name="title" value="{{ old('title') }}">
+                    <input type="text" name="title" value="{{ old('title', $quotation->title) }}">
                     @error('title')
                         <div class="errors">{{ $message }}</div>
                     @enderror
@@ -20,7 +20,7 @@
             <tr>
                 <th>金額</th>
                 <td>
-                    <input type="text" name="total" value="{{ old('total') }}">
+                    <input type="text" name="total" value="{{ old('total', $quotation->total) }}">
                     @error('total')
                         <div class="errors">{{ $message }}</div>
                     @enderror
@@ -29,7 +29,7 @@
             <tr>
                 <th>見積書有効期限</th>
                 <td>
-                    <input type="date" name="validity_period" value="{{ old('validity_period') }}">
+                    <input type="date" name="validity_period" value="{{ old('validity_period', $quotation->validity_period) }}">
                     @error('validity_period')
                         <div class="errors">{{ $message }}</div>
                     @enderror
@@ -38,7 +38,7 @@
             <tr>
                 <th>納期</th>
                 <td>
-                    <input type="date" name="due_date" value="{{ old('due_date') }}">
+                    <input type="date" name="due_date" value="{{ old('due_date', $quotation->due_date) }}">
                     @error('due_date')
                         <div class="errors">{{ $message }}</div>
                     @enderror
@@ -50,7 +50,7 @@
                     <select name="status">
                         <option value="">選択</option>
                         @foreach(config('status') as $key => $value)
-                            {{ $selected = ($key === (int)old('status')) ? 'selected' : '' }}
+                            {{ $selected = ($key === (int)old('status', $quotation->status)) ? 'selected' : '' }}
                             <option value="{{ $key }}" {{ $selected }}>{{ $value }}</option>
                         @endforeach
                     </select>
