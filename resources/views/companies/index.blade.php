@@ -26,7 +26,7 @@
                     {{$company->address}}
                 </td>
                 <td>{{$company->mail_address}}</td>
-                <td><a href="">見積一覧</a></td>
+                <td><a href="{{ route('quotations',$company->id) }}">見積一覧</a></td>
                 <td><a href="">請求一覧</a></td>
                 <td><a href="{{ route('companies.edit',$company->id) }}">編集</a></td>
                 <td><a href="{{ route('companies.destory',$company->id) }}">削除</a></td>
@@ -34,4 +34,3 @@
         @endforeach
     </table>
 </x-layout>
-

@@ -8,7 +8,9 @@
 </head>
 <body>
     <h2>見積一覧</h2>
-    <a href="">見積作成</a>
+    <div>{{ $company->name }}</div>
+    <a href="{{ route('companies') }}">会社一覧に戻る</a>
+    <a href="{{ route('quotations.create',$company->id) }}">{{__('新規作成')}}</a>
     <table border="1">
         <tr>
             <th>見積番号</th>
@@ -25,11 +27,13 @@
             <tr>
                 <td>{{$quotation->no}}</td>
                 <td>{{$quotation->title}}</td>
-                <td></td>
+                <td>{{$company->manager_name}}</td>
                 <td>{{$quotation->total}}</td>
                 <td>{{$quotation->validity_period}}</td>
                 <td>{{$quotation->due_date}}</td>
-                <td>{{$quotation->status}}</td>
+                <td>
+                    {{config('status')[$quotation->status]}}
+                </td>
                 <td><a href="">編集</a></td>
                 <td><a href="">削除</a></td>
             </tr>

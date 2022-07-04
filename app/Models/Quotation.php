@@ -11,6 +11,6 @@ class Quotation extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'no','title','total','validity_period','due_date','status'
+        'company_id','no','title','total','validity_period','due_date','status'
     ];
 }

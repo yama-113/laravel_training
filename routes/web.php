@@ -35,3 +35,7 @@ Route::get('companies/destory/{id}', [CompaniesController::class,'destory'])->na
 
 // 見積情報一覧
 Route::get('quotations/{id}',[QuotationsController::class,'index'])->name('quotations');
+
+// 見積新規作成
+Route::get('quotations/create/{id}',[QuotationsController::class,'create'])->name('quotations.create');
+Route::post('quotations/store/{id}',[QuotationsController::class,'store'])->name('quotations.store');
