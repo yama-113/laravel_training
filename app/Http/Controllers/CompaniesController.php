@@ -27,7 +27,8 @@ class CompaniesController extends Controller
         $company = Company::find($id);
         return view('companies.edit', compact('company'));
     }
-    public function update(Request $request, $id){
+    public function update(StoreCompanyRequest $request, $id){
+        $validated = $request->validated();
         $company = Company::find($id);
         $company->name=$request->input('name');
         $company->manager_name=$request->input('manager_name');
@@ -37,6 +38,17 @@ class CompaniesController extends Controller
         $company->address=$request->input('address');
         $company->mail_address=$request->input('mail_address');
         $company->prefix=$request->input('prefix');
+        // $update = [
+        //     'name' => $request->name,
+        //     'manager_name' => $request->manager_name,
+        //     'phone_number' => $request->phone_number,
+        //     'postal_code' => $request->postal_code,
+        //     'prefectire_code' => $request->prefecture_code,
+        //     'address' => $request->address,
+        //     'mail_address' => $request->mail_address,
+        //     'prefix' => $request->prefix
+        // ];
+        // Company::where('id', $id)->update($update);
         $company->save();
         return redirect('companies');
     }

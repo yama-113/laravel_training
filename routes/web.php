@@ -28,7 +28,7 @@ Route::post('companies/store',[CompaniesController::class, 'store'])->name('comp
 
 // 会社情報編集
 Route::get('companies/edit/{id}', [CompaniesController::class, 'edit'])->name('companies.edit');
-Route::post('companies/update', [CompaniesController::class, 'update'])->name('companies.update');
+Route::post('companies/update/{id}', [CompaniesController::class, 'update'])->name('companies.update');
 
 // 会社情報削除
 Route::get('companies/destory/{id}', [CompaniesController::class,'destory'])->name('companies.destory');
