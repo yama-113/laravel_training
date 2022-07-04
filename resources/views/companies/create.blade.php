@@ -46,9 +46,9 @@
                     <select name="prefecture_code">
                         <option value="">選択</option>
                         @foreach(config('prefectures') as $key => $value)
-                            <option value="{{ $key }}"
-                            {{-- @if($key === (int){{ old('prefecture_code') }}) selected @endif --}}
-                            >{{ $value }}</option>
+                            {{-- 三項演算子 --}}
+                            {{ $selected = ($key === (int)old('prefecture_code')) ? 'selected' : '' }}
+                            <option value="{{ $key }}" {{ $selected }}>{{ $value }}</option>
                         @endforeach
                     </select><br>
                     市区町村<br>
