@@ -1,7 +1,7 @@
 <x-layout>
     <h2>請求作成</h2>
     <a href="{{ route('quotations', $company->id) }}">戻る</a>
-    <form action="{{ route('quotations.store',$company->id) }}" method="post">
+    <form action="{{ route('quotations.update',['id'=>$company->id, 'qid'=>$quotation->id]) }}" method="post">
         @csrf
         <table border="1">
             <tr>

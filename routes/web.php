@@ -26,12 +26,12 @@ Route::get('companies',[CompaniesController::class, 'index'])->name('companies')
 Route::get('companies/create',[CompaniesController::class, 'create'])->name('companies.create');
 Route::post('companies/store',[CompaniesController::class, 'store'])->name('companies.store');
 
-// 会社情報編集
+// 会社情報編集更新
 Route::get('companies/edit/{id}', [CompaniesController::class, 'edit'])->name('companies.edit');
 Route::post('companies/update/{id}', [CompaniesController::class, 'update'])->name('companies.update');
 
 // 会社情報削除
-Route::get('companies/destory/{id}', [CompaniesController::class,'destory'])->name('companies.destory');
+Route::get('companies/destroy/{id}', [CompaniesController::class,'destroy'])->name('companies.destroy');
 
 // 見積情報一覧
 Route::get('quotations/{id}',[QuotationsController::class,'index'])->name('quotations');
@@ -39,3 +39,13 @@ Route::get('quotations/{id}',[QuotationsController::class,'index'])->name('quota
 // 見積新規作成
 Route::get('quotations/create/{id}',[QuotationsController::class,'create'])->name('quotations.create');
 Route::post('quotations/store/{id}',[QuotationsController::class,'store'])->name('quotations.store');
+
+// 見積情報編集更新
+Route::get('quotations/edit/{id}/{qid}', [QuotationsController::class,'edit'])->name('quotations.edit');
+Route::post('quotations/update/{id}/{qid}', [QuotationsController::class,'update'])->name('quotations.update');
+
+// 見積削除
+Route::get('quotations/destroy/{id}/{qid}',[QuotationsController::class,'destroy'])->name('quotations.destroy');
+
+//請求情報一覧
+Route::get('invoices/{id}',[InvoicesController::class,'index'])->name('invoices');
