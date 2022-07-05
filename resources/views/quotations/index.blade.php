@@ -31,11 +31,9 @@
                 <td>{{$quotation->total}}</td>
                 <td>{{$quotation->validity_period}}</td>
                 <td>{{$quotation->due_date}}</td>
-                <td>
-                    {{config('status')[$quotation->status]}}
-                </td>
-                <td><a href="">編集</a></td>
-                <td><a href="">削除</a></td>
+                <td>{{config('status')[$quotation->status]}}</td>
+                <td><a href="{{ route('quotations.edit', ['id'=>$company->id, 'qid'=>$quotation->id]) }}">編集</a></td>
+                <td><a href="{{ route('quotations.destroy', ['id'=>$company->id, 'qid'=>$quotation->id]) }}">削除</a></td>
             </tr>
         @endforeach
     </table>

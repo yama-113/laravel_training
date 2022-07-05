@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Quotation;
+use App\Http\Requests\StoreQuotationRequest;
 
 class QuotationsController extends Controller
 {
@@ -15,13 +16,12 @@ class QuotationsController extends Controller
         $company = Company::where('id', $id)->first();
         return view('quotations.index', compact('quotations','company'));
     }
-
     // 見積作成
     public function create($id){
         $company = Company::where('id', $id)->first();
         return view('quotations.create', compact('company'));
     }
-    public function store(Request $reqest){
+    public function store(StoreQuotationRequest $reqest){
         $quotation = new Quotation;
         $quotations = 1+(int)Quotation::count();
         $quotation->no = 'prefix-q-'.sprintf('%08d',$quotations);
@@ -29,5 +29,26 @@ class QuotationsController extends Controller
         // return view('quotations.index', [$quotation->company_id]);では出来ない。
         // indexクラスの処理を行って戻るようにしている↓
         return redirect()->action([QuotationsController::class, 'index'],['id'=>$quotation->company_id]);
+    }
+    // 見積更新
+    public function edit($id, $qid){
+        $quotation = Quotation::where('company_id', $id)->where('id', $qid)->first();
+        $company = Company::find($id);
+        return view('quotations.edit', compact('quotation', 'company'));
+    }
+    public function update(StoreQuotationRequest $request, $id){
+        $quotation = Quotation::where('id',$id)->update([
+            'title'=>$request->input('title'),
+            'total'=>$request->input('total'),
+            'validity_period'=>$request->input('validity_period'),
+            'due_date'=>$request->input('due_date'),
+            'status'=>$request->input('status')
+        ]);
+        return redirect()->action([QuotationsController::class,'index'],['id'=>$quotation->company_id]);
+    }
+    // 見積論理削除
+    public function destroy($id, $qid){ // ($qid)だと削除できない理由
+        Quotation::where('id',$qid)->delete();
+        return redirect()->action([QuotationsController::class,'index'],['id'=>$id]);
     }
 }

@@ -53,7 +53,7 @@ class CompaniesController extends Controller
         return redirect('companies');
     }
     // 会社情報論理削除
-    public function destory($id){
+    public function destroy($id){
         Company::where('id', $id)->delete();
         return redirect('companies');
     }
