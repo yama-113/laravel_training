@@ -58,3 +58,6 @@ Route::post('invoices/store/{id}',[InvoicesController::class,'store'])->name('in
 // 請求情報編集更新
 Route::get('invoices/edit/{id}/{iid}',[InvoicesController::class,'edit'])->name('invoices.edit');
 Route::post('invoices/update/{id}/{iid}',[InvoicesController::class,'update'])->name('invoices.update');
+
+// 請求削除
+Route::get('invoices/destroy/{id}/{iid}',[InvoicesController::class,'destroy']) ->name('invoices.destroy');

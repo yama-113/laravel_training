@@ -27,7 +27,7 @@
                 <td>{{ $invoice->quotation_no }}</td>
                 <td>{{ config('status')[$invoice->status] }}</td>
                 <td><a href="{{ route('invoices.edit',['id'=>$company->id, 'iid'=>$invoice->id]) }}">編集</a></td>
-                <td><a href="">削除</a></td>
+                <td><a href="{{ route('invoices.destroy',['id'=>$company->id, 'iid'=>$invoice->id]) }}">削除</a></td>
             </tr>
         @endforeach
     </table>
