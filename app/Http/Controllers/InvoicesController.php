@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Invoice;
 use App\Models\Quotation;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreInvoicecRequest;
 
 class InvoicesController extends Controller
 {
@@ -18,7 +19,7 @@ class InvoicesController extends Controller
         $company = Company::find($id);
         return view('invoices.create',compact('company'));
     }
-    public function store(Request $request, $id){
+    public function store(StoreInvoicecRequest $request, $id){
         // 請求番号（prefix-i-00000000）の数値算出
         $invoicesCnt = Invoice::withTrashed()->count();
         $prefix = Company::find($id)->prefix;
@@ -34,5 +35,19 @@ class InvoicesController extends Controller
         $invoice = Invoice::find($iid);
         $company = Company::find($id);
         return view('invoices.edit',['id'=>$id, 'iid'=>$iid],compact('invoice','company'));
+    }
+    public function update(Request $request, $id, $iid){
+        $invoice = Invoice::find($iid);
+        $invoice->title = $request->input('title');
+        $invoice->total = $request->input('total');
+        $invoice->payment_deadline = $request->input('payment_deadline');
+        $invoice->date_of_issue = $request->input('date_of_issue');
+        $invoice->status = $request->input('status');
+        $invoice->save();
+        return redirect()->action([InvoicesController::class,'index'],['id'=>$id]);
+    }
+    public function destroy($id, $iid){
+        Invoice::find($iid)->delete();
+        return redirect()->action([InvoicesController::class,'index'],['id'=>$id]);
     }
 }
