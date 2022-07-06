@@ -57,6 +57,9 @@
                     @error('status')
                         <div class="errors">{{ $message }}</div>
                     @enderror
+                    @error('status_check')
+                        <div class="errors">{{ $message }}</div>
+                    @enderror
                 </td>
             </tr>
         </table>
