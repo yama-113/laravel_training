@@ -22,11 +22,14 @@ class QuotationsController extends Controller
         $company = Company::where('id', $id)->first();
         return view('quotations.create', compact('company'));
     }
-    public function store(StoreQuotationRequest $reqest){
-        $quotation = new Quotation;
+    public function store(StoreQuotationRequest $reqest, $id){
+        // 見積番号（prefix-q-00000000）の数値算出
         $quotationCnt = Quotation::withTrashed()->count();
-        $quotations = 1+(int)$quotationCnt;
-        $quotation->no = 'prefix-q-'.sprintf('%08d',$quotations);
+        $prefix = Company::find($id)->prefix;
+        $quotationNo = $prefix.'-q-'.sprintf('%08d',(int)$quotationCnt+1) ;
+        // 新規見積保存
+        $quotation = new Quotation;
+        $quotation->no = $quotationNo;
         $quotation->fill($reqest->all())->save();
         // return view('quotations.index', [$quotation->company_id]);では出来ない。
         // indexクラスの処理を行って戻るようにしている↓

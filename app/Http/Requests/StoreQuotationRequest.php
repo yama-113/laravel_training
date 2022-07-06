@@ -27,7 +27,7 @@ class StoreQuotationRequest extends FormRequest
             'title' => 'required|max:64',
             'total' => 'required|max:10',
             'validity_period' => 'required|max:32',
-            'due_date' => 'required',
+            'due_date' => 'required|after:today',
             'status' => 'required'
         ];
     }
@@ -39,6 +39,12 @@ class StoreQuotationRequest extends FormRequest
             'validity_period' => '見積書有効期限',
             'due_date' => '納期',
             'status' => '状態'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'due_date.after' => '本日以降の日付を指定してください。',
         ];
     }
 }
