@@ -1,5 +1,5 @@
 <x-layout>
-    <h2>請求作成</h2>
+    <h2>見積作成</h2>
     <a href="{{ route('quotations', $company->id) }}">戻る</a>
     <form action="{{ route('quotations.store',$company->id) }}" method="post">
         @csrf
@@ -55,6 +55,9 @@
                         @endforeach
                     </select>
                     @error('status')
+                        <div class="errors">{{ $message }}</div>
+                    @enderror
+                    @error('status_check')
                         <div class="errors">{{ $message }}</div>
                     @enderror
                 </td>

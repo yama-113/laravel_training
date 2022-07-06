@@ -21,14 +21,21 @@ class StoreQuotationRequest extends FormRequest
      *
      * @return array
      */
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'total' => mb_convert_kana($this->total,"n"),
+            'status' => (array_key_exists($this->status, config('status'))) ? $this->status : false
+        ]);
+    }
     public function rules()
     {
         return [
-            'title' => 'required|max:64',
-            'total' => 'required|max:10',
-            'validity_period' => 'required|max:32',
-            'due_date' => 'required',
-            'status' => 'required'
+            'title' => 'required|string|max:64',
+            'total' => 'required|integer|max:10',
+            'validity_period' => 'required|date|max:32',
+            'due_date' => 'required|date|after:today',
+            'status' => 'required|accepted'
         ];
     }
     public function attributes()
@@ -39,6 +46,13 @@ class StoreQuotationRequest extends FormRequest
             'validity_period' => '見積書有効期限',
             'due_date' => '納期',
             'status' => '状態'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'due_date.after' => '本日以降の日付を指定してください。',
+            'status.accepted' => '状態は選択肢の中から選択してください。'
         ];
     }
 }

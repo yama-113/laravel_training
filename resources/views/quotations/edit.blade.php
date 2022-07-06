@@ -1,5 +1,5 @@
 <x-layout>
-    <h2>請求作成</h2>
+    <h2>見積更新</h2>
     <a href="{{ route('quotations', $company->id) }}">戻る</a>
     <form action="{{ route('quotations.update',['id'=>$company->id, 'qid'=>$quotation->id]) }}" method="post">
         @csrf
@@ -61,6 +61,6 @@
             </tr>
         </table>
         <input type="hidden" name="company_id" value="{{ $company->id }}">
-        <input type="submit" value="請求作成">
+        <input type="submit" value="見積更新">
     </form>
 </x-layout>
