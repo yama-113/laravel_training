@@ -1,5 +1,8 @@
 <x-layout>
     <h2>請求一覧</h2>
+    <div>{{ $company->name }}</div>
+    <a href="{{ route('companies') }}">会社一覧に戻る</a>
+    <a href="{{ route('invoices.create',['id'=>$company->id]) }}">新規作成</a>
     <table border="1">
         <tr>
             <th>請求番号</th>
@@ -16,15 +19,15 @@
         @foreach($invoices as $invoice)
             <tr>
                 <td>{{ $invoice->no }}</td>
-                <td>{{ $incoice->title }}</td>
+                <td>{{ $invoice->title }}</td>
                 <td>{{ $company->manager_name }}</td>
                 <td>{{ $invoice->total }}</td>
                 <td>{{ $invoice->payment_deadline }}</td>
                 <td>{{ $invoice->date_of_issue }}</td>
-                <td>{{ $quotation->no }}</td>
-                <td>{{ $invoice->status }}</td>
-                <td>編集</td>
-                <td>削除</td>
+                <td>{{ $invoice->quotation_no }}</td>
+                <td>{{ config('status')[$invoice->status] }}</td>
+                <td><a href="{{ route('invoices.edit',['id'=>$company->id, 'iid'=>$invoice->id]) }}">編集</a></td>
+                <td><a href="">削除</a></td>
             </tr>
         @endforeach
     </table>

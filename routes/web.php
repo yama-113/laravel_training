@@ -50,3 +50,11 @@ Route::get('quotations/destroy/{id}/{qid}',[QuotationsController::class,'destroy
 
 //請求情報一覧
 Route::get('invoices/{id}',[InvoicesController::class,'index'])->name('invoices');
+
+// 請求新規作成
+Route::get('invoices/create/{id}',[InvoicesController::class,'create'])->name('invoices.create');
+Route::post('invoices/store/{id}',[InvoicesController::class,'store'])->name('invoices.store');
+
+// 請求情報編集更新
+Route::get('invoices/edit/{id}/{iid}',[InvoicesController::class,'edit'])->name('invoices.edit');
+Route::post('invoices/update/{id}/{iid}',[InvoicesController::class,'update'])->name('invoices.update');
