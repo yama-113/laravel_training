@@ -7,7 +7,7 @@
             <tr>
                 <th>請求名</th>
                 <td>
-                    <input type="text" name="title" value="{{old('title',$invoice->title)}}">
+                    <input type="text" name="title" value="{{old('title',$invoice->title)}}" maxlength="64">
                     @error('title')
                         {{$message}}
                     @enderror
@@ -22,7 +22,7 @@
             <tr>
                 <th>金額</th>
                 <td>
-                    <input type="text" name="total" value="{{old('total',$invoice->total)}}">
+                    <input type="text" name="total" value="{{old('total',$invoice->total)}}" maxlength="10">
                     @error('total')
                         {{$message}}
                     @enderror

@@ -7,7 +7,7 @@
             <tr>
                 <th>見積名</th>
                 <td>
-                    <input type="text" name="title" value="{{ old('title') }}">
+                    <input type="text" name="title" value="{{ old('title') }}" maxlength="64">
                     @error('title')
                         <div class="errors">{{ $message }}</div>
                     @enderror
@@ -20,7 +20,7 @@
             <tr>
                 <th>金額</th>
                 <td>
-                    <input type="text" name="total" value="{{ old('total') }}">
+                    <input type="text" name="total" value="{{ old('total') }}" maxlength="10">
                     @error('total')
                         <div class="errors">{{ $message }}</div>
                     @enderror
