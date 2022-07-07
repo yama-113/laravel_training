@@ -48,6 +48,9 @@
                 @error('prefecture_code')
                         <div class="errors">{{ $message }}</div>
                 @enderror
+                @error('prefecture_code_check')
+                        <div class="errors">{{ $message }}</div>
+                @enderror
                 市区町村
                 <input type="text" name="address" value="{{ $company->address }}"><br>
                 @error('address')
