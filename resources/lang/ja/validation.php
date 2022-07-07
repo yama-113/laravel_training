@@ -129,6 +129,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'false' => ':attributeは選択肢の中から選択してください。',
 
     /*
     |--------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class StoreQuotationRequest extends FormRequest
 {
@@ -25,8 +26,12 @@ class StoreQuotationRequest extends FormRequest
     {
         $this->merge([
             'total' => mb_convert_kana($this->total,"n"),
-            'status' => (array_key_exists($this->status, config('status'))) ? $this->status : false
+            'status_check' => array_key_exists($this->status, config('status')) ? true : false
         ]);
+        // dd(isset($this->status));
+        // dd(array_key_exists($this->status, config('status')));
+        // dd(is_bool(isset($this->status) && array_key_exists($this->status, config('status'))));
+        // print_r(is_bool(true)); exit;
     }
     public function rules()
     {
@@ -35,7 +40,8 @@ class StoreQuotationRequest extends FormRequest
             'total' => 'required|numeric|max:10',
             'validity_period' => 'required|date|max:32',
             'due_date' => 'required|date|after:today',
-            'status' => 'required|accepted'
+            'status' => 'required',
+            'status_check' => 'accepted',
         ];
     }
     public function attributes()
@@ -45,14 +51,15 @@ class StoreQuotationRequest extends FormRequest
             'total' => '金額',
             'validity_period' => '見積書有効期限',
             'due_date' => '納期',
-            'status' => '状態'
+            'status' => '状態',
+            'status_check' => '状態'
         ];
     }
     public function messages()
     {
         return [
             'due_date.after' => '本日以降の日付を指定してください。',
-            'status.accepted' => '状態は選択肢の中から選択してください。'
+            'status_check.accepted' => ':attributeは選択肢の中から選択してください。'
         ];
     }
 }
