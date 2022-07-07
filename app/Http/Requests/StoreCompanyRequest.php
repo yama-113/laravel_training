@@ -20,18 +20,17 @@ class StoreCompanyRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
-     */
-    public function rules()
+     */    public function rules()
     {
         return [
-            'name' => 'required|max:65',
-            'manager_name' => 'required|max:32',
-            'phone_number' => 'required',
-            'postal_code' => 'required',
+            'name' => 'required|string|max:65',
+            'manager_name' => 'required|string|max:32',
+            'phone_number' => 'required|numeric|max:11',
+            'postal_code' => 'required|numeric|max:7',
             'prefecture_code' => 'required',
-            'address' => 'required|max:100',
-            'mail_address' => 'required|max:100',
-            'prefix' => 'required|max:8',
+            'address' => 'required|string|max:100',
+            'mail_address' => 'required|string|max:100',
+            'prefix' => 'required|numeric|max:8',
         ];
     }
     public function attributes()

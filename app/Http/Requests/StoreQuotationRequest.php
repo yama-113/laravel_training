@@ -24,20 +24,21 @@ class StoreQuotationRequest extends FormRequest
      */
     public function prepareForValidation()
     {
+        //選択以外なら：
+        $a = true;
+        if(!is_null($this->status)){
+            $a = array_key_exists($this->status, config('status'));
+        }
         $this->merge([
             'total' => mb_convert_kana($this->total,"n"),
-            'status_check' => array_key_exists($this->status, config('status')) ? true : false
+            'status_check' => $a
         ]);
-        // dd(isset($this->status));
-        // dd(array_key_exists($this->status, config('status')));
-        // dd(is_bool(isset($this->status) && array_key_exists($this->status, config('status'))));
-        // print_r(is_bool(true)); exit;
     }
     public function rules()
     {
         return [
             'title' => 'required|string|max:64',
-            'total' => 'required|numeric|max:10',
+            'total' => 'required|integer|digits_between:1,10',
             'validity_period' => 'required|date|max:32',
             'due_date' => 'required|date|after:today',
             'status' => 'required',
