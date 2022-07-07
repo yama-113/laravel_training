@@ -12,14 +12,13 @@ class QuotationsController extends Controller
 {
     // 見積一覧
     public function index($id){
-        // Quotation::find($id) でできなかったのは？
         $quotations = Quotation::where('company_id', $id)->get();
-        $company = Company::where('id', $id)->first();
+        $company = Company::find($id);
         return view('quotations.index', compact('quotations','company'));
     }
     // 見積作成
     public function create($id){
-        $company = Company::where('id', $id)->first();
+        $company = Company::find($id);
         return view('quotations.create', compact('company'));
     }
     public function store(StoreQuotationRequest $reqest, $id){
@@ -37,7 +36,7 @@ class QuotationsController extends Controller
     }
     // 見積更新
     public function edit($id, $qid){
-        $quotation = Quotation::where('company_id', $id)->where('id', $qid)->first();
+        $quotation = Quotation::find($qid);
         $company = Company::find($id);
         return view('quotations.edit', compact('quotation', 'company'));
     }

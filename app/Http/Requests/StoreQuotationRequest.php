@@ -32,7 +32,7 @@ class StoreQuotationRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:64',
-            'total' => 'required|integer|max:10',
+            'total' => 'required|numeric|max:10',
             'validity_period' => 'required|date|max:32',
             'due_date' => 'required|date|after:today',
             'status' => 'required|accepted'
