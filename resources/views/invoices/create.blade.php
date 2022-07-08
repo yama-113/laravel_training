@@ -68,6 +68,9 @@
                     @error('status')
                         {{$message}}
                     @enderror
+                    @error('status_check')
+                        {{$message}}
+                    @enderror
                 </td>
             </tr>
         </table>

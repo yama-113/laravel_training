@@ -8,6 +8,9 @@
                 <th>請求名</th>
                 <td>
                     <input type="text" name="title" value="{{old('title',$invoice->title)}}">
+                    @error('title')
+                        {{$message}}
+                    @enderror
                 </td>
             </tr>
             <tr>
@@ -20,18 +23,27 @@
                 <th>金額</th>
                 <td>
                     <input type="text" name="total" value="{{old('total',$invoice->total)}}">
+                    @error('total')
+                        {{$message}}
+                    @enderror
                 </td>
             </tr>
             <tr>
                 <th>支払期限</th>
                 <td>
                     <input type="date" name="payment_deadline" value="{{old('date',$invoice->payment_deadline)}}">
+                    @error('payment_deadline')
+                        {{$message}}
+                    @enderror
                 </td>
             </tr>
             <tr>
                 <th>請求日</th>
                 <td>
                     <input type="date" name="date_of_issue" value="{{old('date_of_issue',$invoice->date_of_issue)}}">
+                    @error('date_of_issue')
+                        {{$message}}
+                    @enderror
                 </td>
             </tr>
             <tr>
@@ -50,6 +62,12 @@
                             <option value="{{$key}}" {{$selected}}>{{$value}}</option>
                         @endforeach
                     </select>
+                    @error('status')
+                        {{$message}}
+                    @enderror
+                    @error('status_check')
+                        {{$message}}
+                    @enderror
                 </td>
             </tr>
         </table>
