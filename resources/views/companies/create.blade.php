@@ -19,7 +19,7 @@
                     @error('manager_name')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="manager_name" value="{{ old('message') }}">
+                    <input type="text" name="manager_name" value="{{ old('manager_name') }}">
                 </td>
             </tr>
             <tr>
@@ -41,6 +41,9 @@
                     <input type="text" name="postal_code" value="{{ old('postal_code') }}"><br>
                     都道府県<br>
                     @error('prefecture_code')
+                        <div class="errors">{{ $message }}</div>
+                    @enderror
+                    @error('prefecture_code_check')
                         <div class="errors">{{ $message }}</div>
                     @enderror
                     <select name="prefecture_code">
