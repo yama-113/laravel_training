@@ -7,7 +7,7 @@
             <tr>
                 <th>請求名</th>
                 <td>
-                    <input type="text" name="title" value="{{old('title')}}"><br>
+                    <input type="text" name="title" value="{{old('title')}}" maxlength="64"><br>
                     @error('title')
                         {{$message}}
                     @enderror
@@ -22,7 +22,7 @@
             <tr>
                 <th>金額</th>
                 <td>
-                    <input type="text" name="total" value="{{old('total')}}"><br>
+                    <input type="text" name="total" value="{{old('total')}}" maxlength="10"><br>
                     @error('total')
                         {{$message}}
                     @enderror
@@ -49,7 +49,7 @@
             <tr>
                 <th>見積番号</th>
                 <td>
-                    <input type="text" name="quotation_no" value="{{old('quotation_no')}}"><br>
+                    <input type="text" name="quotation_no" value="{{old('quotation_no')}}" maxlength="100"><br>
                     @error('quotation_no')
                         {{$message}}
                     @enderror

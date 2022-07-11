@@ -10,7 +10,7 @@
                     @error('name')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="name" value="{{ old('name') }}">
+                    <input type="text" name="name" value="{{ old('name') }}" maxlenght='64'>
                 </td>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
                     @error('manager_name')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="manager_name" value="{{ old('manager_name') }}">
+                    <input type="text" name="manager_name" value="{{ old('manager_name') }}" maxlength="32">
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                     @error('phone_number')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="phone_number" value="{{ old('phone_number') }}">
+                    <input type="text" name="phone_number" value="{{ old('phone_number') }}" maxlength="11">
                 </td>
             </tr>
             <tr>
@@ -38,7 +38,7 @@
                     @error('postal_code')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="postal_code" value="{{ old('postal_code') }}"><br>
+                    <input type="text" name="postal_code" value="{{ old('postal_code') }}" maxlength="7"><br>
                     都道府県<br>
                     @error('prefecture_code')
                         <div class="errors">{{ $message }}</div>
@@ -58,7 +58,7 @@
                     @error('address')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="address" value="{{ old('address') }}"><br>
+                    <input type="text" name="address" value="{{ old('address') }}" maxlength="100"><br>
                 </td>
             </tr>
             <tr>
@@ -67,7 +67,7 @@
                     @error('mail_address')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="mail_address" value="{{ old('mail_address') }}">
+                    <input type="text" name="mail_address" value="{{ old('mail_address') }}" maxlength="100">
                 </td>
             </tr>
             <tr>
@@ -76,7 +76,7 @@
                     @error('prefix')
                         <div class="errors">{{ $message }}</div>
                     @enderror
-                    <input type="text" name="prefix" value="{{ old('prefix') }}">
+                    <input type="text" name="prefix" value="{{ old('prefix') }}" maxlength="8">
                 </td>
             </tr>
         </table>

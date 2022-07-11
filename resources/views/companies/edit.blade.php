@@ -6,7 +6,7 @@
         <tr>
             <th>会社名</th>
             <td>
-                <input type="text" name="name" value="{{ old('name', $company->name) }}">
+                <input type="text" name="name" value="{{ old('name', $company->name) }}" maxlength="64">
                 @error('name')
                         <div class="errors">{{ $message }}</div>
                 @enderror
@@ -15,7 +15,7 @@
         <tr>
             <th>担当者名</th>
             <td>
-                <input type="text" name="manager_name" value="{{ old('manager_name', $company->manager_name) }}">
+                <input type="text" name="manager_name" value="{{ old('manager_name', $company->manager_name) }}" maxlength="32">
                 @error('manager_name')
                         <div class="errors">{{ $message }}</div>
                 @enderror
@@ -24,7 +24,7 @@
         <tr>
             <th>電話番号</th>
             <td>
-                <input type="text" name="phone_number" value="{{ old('manager_name', $company->phone_number) }}">
+                <input type="text" name="phone_number" value="{{ old('manager_name', $company->phone_number) }}" maxlength="11">
                 @error('phone_number')
                         <div class="errors">{{ $message }}</div>
                 @enderror
@@ -34,7 +34,7 @@
             <th>住所</th>
             <td>
                 郵便番号
-                <input type="text" name="postal_code" value="{{ old('postal_code', $company->postal_code) }}"><br>
+                <input type="text" name="postal_code" value="{{ old('postal_code', $company->postal_code) }}" maxlength="7"><br>
                 @error('postal_code')
                         <div class="errors">{{ $message }}</div>
                 @enderror
@@ -52,7 +52,7 @@
                         <div class="errors">{{ $message }}</div>
                 @enderror
                 市区町村
-                <input type="text" name="address" value="{{ $company->address }}"><br>
+                <input type="text" name="address" value="{{ $company->address }}" maxlength="100"><br>
                 @error('address')
                         <div class="errors">{{ $message }}</div>
                 @enderror
@@ -61,7 +61,7 @@
         <tr>
             <th>メールアドレス</th>
             <td>
-                <input type="text" name="mail_address" value="{{ $company->mail_address }}">
+                <input type="text" name="mail_address" value="{{ $company->mail_address }}" maxlength="100">
                 @error('mail_address')
                         <div class="errors">{{ $message }}</div>
                 @enderror
@@ -70,7 +70,7 @@
         <tr>
             <th>プレフィックス</th>
             <td>{{ $company->prefix }}</td>
-            <input type="hidden" name="prefix" value="{{ $company->prefix }}">
+            <input type="hidden" name="prefix" value="{{ $company->prefix }}" maxlength="8">
         </tr>
     </table>
     <input type="submit" value="更新">

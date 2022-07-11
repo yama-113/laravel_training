@@ -47,7 +47,7 @@ class StoreCompanyRequest extends FormRequest
             'prefecture_code' => 'required',
             'prefecture_code_check' => 'accepted',
             'address' => 'required|string|max:100',
-            'mail_address' => 'required|string|max:100',
+            'mail_address' => 'required|string|email:rfc,dns|max:100',
             'prefix' => 'required|numeric|digits_between:1,8|unique:companies,prefix',
         ];
     }
@@ -68,6 +68,7 @@ class StoreCompanyRequest extends FormRequest
     public function messages()
     {
         return [
+            'mail_address.email' => ':attributeは正確にご記入ください。',
             'prefix.unique' => 'ご指定のプレフィックスは既に登録されています。',
             'prefecture_code_check.accepted' => '都道府県は選択肢の中から選択してください。'
         ];
